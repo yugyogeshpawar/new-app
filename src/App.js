@@ -6,8 +6,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello World v1
+        <p style={{ color: 'red' }}>
+          Hello World v2
         </p>
         <a
           className="App-link"
