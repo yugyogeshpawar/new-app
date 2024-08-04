@@ -1,0 +1,29 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: buildstage
+    jobs:
+      - job: building
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSource: 'spec'
+              versionSpec: '16.x'
+          - task: Npm@1
+            inputs:
+              command: 'install'
+          - task: Npm@1
+            inputs:
+              command: 'custom'
+              customCommand: 'run build'
+          - task: CopyFilesOverSSH@0
+            inputs:
+              sshEndpoint: 'vm-ssh-test-app'
+              sourceFolder: '$(System.DefaultWorkingDirectory)/build/'
+              contents: '**'
+              targetFolder: '/var/www/html/'
+              readyTimeout: '20000'
