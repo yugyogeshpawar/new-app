@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p style={{ color: 'red' }}>
-          Hello World v2
+          this is a testing app
         </p>
         <a
           className="App-link"
